@@ -6,16 +6,17 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch Application",
+      "name": "Application",
       "request": "launch",
-      "mainClass": "com.example.application.Application"
+      "mainClass": "com.example.application.Application",
+      "projectName": "tupak"
     },
     {
       "type": "java",
-      "request": "attach",
-      "name": "Attach to Application started using Maven",
-      "hostName": "localhost",
-      "port": 5247
+      "name": "Application",
+      "request": "launch",
+      "mainClass": "com.example.application.Application",
+      "projectName": "tupac"
     }
   ]
 }
