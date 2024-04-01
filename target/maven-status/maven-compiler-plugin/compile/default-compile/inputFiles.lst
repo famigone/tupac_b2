@@ -1,0 +1,13 @@
+/home/fede/tupac/src/main/java/com/example/application/data/package-info.java
+/home/fede/tupac/src/main/java/com/example/application/data/User.java
+/home/fede/tupac/src/main/java/com/example/application/security/AuthenticatedUser.java
+/home/fede/tupac/src/main/java/com/example/application/security/UserDetailsServiceImpl.java
+/home/fede/tupac/src/main/java/com/example/application/services/UserService.java
+/home/fede/tupac/src/main/java/com/example/application/data/UserRepository.java
+/home/fede/tupac/src/main/java/com/example/application/data/AbstractEntity.java
+/home/fede/tupac/src/main/java/com/example/application/security/SecurityConfiguration.java
+/home/fede/tupac/src/main/java/com/example/application/services/package-info.java
+/home/fede/tupac/src/main/java/com/example/application/services/HelloWorldService.java
+/home/fede/tupac/src/main/java/com/example/application/services/UserEndpoint.java
+/home/fede/tupac/src/main/java/com/example/application/data/Role.java
+/home/fede/tupac/src/main/java/com/example/application/Application.java
