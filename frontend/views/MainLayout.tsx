@@ -31,7 +31,7 @@ export default function MainLayout() {
           <h1 className="text-l m-0">Tupac IDE</h1>
           <nav>
             {state.user ? (
-              <NavLink className={navLinkClasses} to="/">
+              <NavLink className={navLinkClasses} to="/materias">
                 Materias
               </NavLink>
             ) : null}

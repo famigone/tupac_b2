@@ -18,6 +18,10 @@
     {
       "name" : "HelloWorldService",
       "x-class-name" : "com.example.application.services.HelloWorldService"
+    },
+    {
+      "name" : "MateriaService",
+      "x-class-name" : "com.example.application.services.MateriaService"
     }
   ],
   "paths" : {
@@ -81,6 +85,105 @@
           }
         }
       }
+    },
+    "/MateriaService/delete" : {
+      "post" : {
+        "tags" : [
+          "MateriaService"
+        ],
+        "operationId" : "MateriaService_delete_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "id" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "java.lang.Long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : ""
+          }
+        }
+      }
+    },
+    "/MateriaService/findAllMaterias" : {
+      "post" : {
+        "tags" : [
+          "MateriaService"
+        ],
+        "operationId" : "MateriaService_findAllMaterias_POST",
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.MateriaService$MateriaRecord"
+                      }
+                    ]
+                  },
+                  "x-java-type" : "java.util.List"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/MateriaService/save" : {
+      "post" : {
+        "tags" : [
+          "MateriaService"
+        ],
+        "operationId" : "MateriaService_save_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "laMateria" : {
+                    "anyOf" : [
+                      {
+                        "$ref" : "#/components/schemas/com.example.application.services.MateriaService$MateriaRecord"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.services.MateriaService$MateriaRecord"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components" : {
@@ -124,6 +227,25 @@
             }
           }
         ]
+      },
+      "com.example.application.services.MateriaService$MateriaRecord" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-java-type" : "java.lang.Long"
+          },
+          "nombre" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          }
+        }
       },
       "com.example.application.data.Role" : {
         "type" : "string",

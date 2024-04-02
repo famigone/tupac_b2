@@ -17,9 +17,17 @@ public class Materia extends AbstractEntity {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     //nombre de la materia
     @NotBlank
-    @NotNull        
+    @NotNull      
+    @Column(unique = true)   
     private String nombre;
 
         
