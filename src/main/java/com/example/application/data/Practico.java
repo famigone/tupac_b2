@@ -4,15 +4,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 
 
 @Entity
-@Table(name = "materia")
-public class Materia extends AbstractEntity {
+@Table(name = "Practico")
+public class Practico extends AbstractEntity {
   
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -22,26 +21,23 @@ public class Materia extends AbstractEntity {
         return id;
     }
 
-    
-    private List<Practico> practicos = new LinkedList<>();
-
-
-    @OneToMany(mappedBy="materia")
-    public List<Practico> getPracticos() {
-        return practicos;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
-    //nombre de la materia
+    //nombre de la Practico
     @NotBlank
     @NotNull      
     @Column(unique = true)   
     private String nombre;
 
-        
-    public Materia() {
+    private Materia materia;
+    
+    @ManyToOne
+    public Materia getMateria() {
+        return materia;
+    }
+
+    public Practico() {
         
     }
     
