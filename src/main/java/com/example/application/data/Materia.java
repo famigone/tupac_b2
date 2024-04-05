@@ -22,15 +22,15 @@ public class Materia extends AbstractEntity {
         return id;
     }
 
-    
+   @OneToMany(mappedBy="materia") 
     private List<Practico> practicos = new LinkedList<>();
 
 
-    @OneToMany(mappedBy="materia")
-    public List<Practico> getPracticos() {
+   
+/*     public List<Practico> getPracticos() {
         return practicos;
     }
-
+*/
     public void setId(Long id) {
         this.id = id;
     }

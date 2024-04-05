@@ -7,7 +7,7 @@ import { GridColumn } from "@hilla/react-components/GridColumn";
 
 import MateriaRecord from 'Frontend/generated/com/example/application/services/MateriaService/MateriaRecord';
 import { MateriaService } from 'Frontend/generated/endpoints';
-import MateriaForm from './MateriaForm';
+import MateriaForm from './FormPractico';
 import { ConfirmDialog } from '@hilla/react-components/ConfirmDialog.js';
 import { HorizontalLayout } from '@hilla/react-components/HorizontalLayout.js';
 import { Icon } from '@hilla/react-components/Icon.js';

@@ -12,18 +12,18 @@ import org.springframework.data.repository.query.Param;
 
 import com.helger.commons.email.EmailAddress;
 
-public interface MateriaRepository extends JpaRepository<Materia, Long>{
+public interface PracticoRepository extends JpaRepository<Practico, Long>{
     
     
-   // List<Materia> findMateriaesByPerfiles(Long id);    
+   // List<Practico> findPracticoesByPerfiles(Long id);    
    
    
 
-   //List<Materia> findMateria(@Param("perfilId") Long perfilId); 
+   //List<Practico> findPractico(@Param("perfilId") Long perfilId); 
 
-//@Query("SELECT a FROM Materia a JOIN a.perfiles p WHERE p.id = :perfilId")
-//List<Materia> findMateriaesByPerfilId(@Param("perfilId") Long perfilId);
+//@Query("SELECT a FROM Practico a JOIN a.perfiles p WHERE p.id = :perfilId")
+//List<Practico> findPracticoesByPerfilId(@Param("perfilId") Long perfilId);
 
-Materia getMateriaById(Long id);
+Practico getPracticoById(Long id);
 
 }
