@@ -27,7 +27,13 @@ public class Materia extends AbstractEntity {
    @OneToMany(mappedBy="materia") 
     private List<Practico> practicos = new LinkedList<>();
 
-    
+    @ManyToMany(mappedBy = "materias")    
+    private List<User> users = new LinkedList<>();
+
+    public List<User> getUsers() {
+        return users;
+    }
+
     public void setUsers(List<User> users) {
         this.users = users;
     }

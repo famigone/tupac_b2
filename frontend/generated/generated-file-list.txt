@@ -3,11 +3,17 @@ HelloWorldService.ts
 MateriaService.ts
 com/example/application/data/User.ts
 com/example/application/services/MateriaService/MateriaRecord.ts
+com/example/application/data/Materia.ts
 com/example/application/data/Role.ts
 com/example/application/data/AbstractEntity.ts
+com/example/application/data/Practico.ts
+com/example/application/data/Desafio.ts
 connect-client.default.ts
 endpoints.ts
 com/example/application/data/UserModel.ts
 com/example/application/services/MateriaService/MateriaRecordModel.ts
+com/example/application/data/MateriaModel.ts
 com/example/application/data/RoleModel.ts
 com/example/application/data/AbstractEntityModel.ts
+com/example/application/data/PracticoModel.ts
+com/example/application/data/DesafioModel.ts

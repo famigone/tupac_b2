@@ -53,6 +53,16 @@ public class Practico extends AbstractEntity {
    @OneToMany(mappedBy="practico") 
     private List<Desafio> desafios = new LinkedList<>();
 
+    @ManyToMany(mappedBy = "practicos")    
+    private List<User> users = new LinkedList<>();
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
 
     public List<Desafio> getDesafios() {

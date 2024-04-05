@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +23,17 @@ public class Desafio extends AbstractEntity {
     
     @ManyToOne 
     private Practico practico;
+
+ @ManyToMany(mappedBy = "desafios")    
+    private List<User> users = new LinkedList<>();
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
     public Practico getPractico() {
         return practico;

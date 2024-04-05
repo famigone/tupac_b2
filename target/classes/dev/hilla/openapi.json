@@ -196,6 +196,22 @@
           {
             "type" : "object",
             "properties" : {
+              "materias" : {
+                "type" : "array",
+                "items" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.Materia"
+                    }
+                  ]
+                },
+                "x-java-type" : "java.util.List",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.ManyToMany"
+                  }
+                ]
+              },
               "username" : {
                 "type" : "string",
                 "x-java-type" : "java.lang.String"
@@ -247,6 +263,72 @@
           }
         }
       },
+      "com.example.application.data.Materia" : {
+        "anyOf" : [
+          {
+            "$ref" : "#/components/schemas/com.example.application.data.AbstractEntity"
+          },
+          {
+            "type" : "object",
+            "properties" : {
+              "id" : {
+                "type" : "integer",
+                "format" : "int64",
+                "x-java-type" : "java.lang.Long",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.Id"
+                  }
+                ]
+              },
+              "practicos" : {
+                "type" : "array",
+                "items" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.Practico"
+                    }
+                  ]
+                },
+                "x-java-type" : "java.util.List",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.OneToMany"
+                  }
+                ]
+              },
+              "users" : {
+                "type" : "array",
+                "items" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.User"
+                    }
+                  ]
+                },
+                "x-java-type" : "java.util.List",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.ManyToMany"
+                  }
+                ]
+              },
+              "nombre" : {
+                "type" : "string",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotBlank"
+                  },
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.lang.String"
+              }
+            }
+          }
+        ]
+      },
       "com.example.application.data.Role" : {
         "type" : "string",
         "enum" : [
@@ -278,6 +360,174 @@
             ]
           }
         }
+      },
+      "com.example.application.data.Practico" : {
+        "anyOf" : [
+          {
+            "$ref" : "#/components/schemas/com.example.application.data.AbstractEntity"
+          },
+          {
+            "type" : "object",
+            "properties" : {
+              "id" : {
+                "type" : "integer",
+                "format" : "int64",
+                "x-java-type" : "java.lang.Long",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.Id"
+                  }
+                ]
+              },
+              "descripcion" : {
+                "type" : "string",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotBlank"
+                  },
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.lang.String"
+              },
+              "nombre" : {
+                "type" : "string",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotBlank"
+                  },
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.lang.String"
+              },
+              "desafios" : {
+                "type" : "array",
+                "items" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.Desafio"
+                    }
+                  ]
+                },
+                "x-java-type" : "java.util.List",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.OneToMany"
+                  }
+                ]
+              },
+              "users" : {
+                "type" : "array",
+                "items" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.User"
+                    }
+                  ]
+                },
+                "x-java-type" : "java.util.List",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.ManyToMany"
+                  }
+                ]
+              },
+              "fechaLimite" : {
+                "type" : "string",
+                "format" : "date",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotBlank"
+                  },
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.sql.Date"
+              }
+            }
+          }
+        ]
+      },
+      "com.example.application.data.Desafio" : {
+        "anyOf" : [
+          {
+            "$ref" : "#/components/schemas/com.example.application.data.AbstractEntity"
+          },
+          {
+            "type" : "object",
+            "properties" : {
+              "narrativa" : {
+                "type" : "string",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotBlank"
+                  },
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.lang.String"
+              },
+              "practico" : {
+                "anyOf" : [
+                  {
+                    "$ref" : "#/components/schemas/com.example.application.data.Practico"
+                  }
+                ],
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.ManyToOne"
+                  }
+                ]
+              },
+              "users" : {
+                "type" : "array",
+                "items" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.data.User"
+                    }
+                  ]
+                },
+                "x-java-type" : "java.util.List",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.ManyToMany"
+                  }
+                ]
+              },
+              "orden" : {
+                "type" : "object",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotBlank"
+                  },
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.lang.Number"
+              },
+              "tpId" : {
+                "type" : "integer",
+                "format" : "int64",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotBlank"
+                  },
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.lang.Long"
+              }
+            }
+          }
+        ]
       }
     }
   }

@@ -8,13 +8,35 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.annotation.Nullable;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "application_user")
 public class User extends AbstractEntity {
 
+    @ManyToMany
+    private List<Practico> practicos = new LinkedList<>();
+
+    @ManyToMany
+    private List<Desafio> desafios = new LinkedList<>();
+
+
+    @ManyToMany
+    private List<Materia> materias = new LinkedList<>();
+
+
+    public List<Materia> getMaterias() {
+        return materias;
+    }
+    public void setMaterias(List<Materia> materias) {
+        this.materias = materias;
+    }
     private String username;
     private String name;
     @JsonIgnore

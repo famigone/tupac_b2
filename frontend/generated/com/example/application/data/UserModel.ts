@@ -1,9 +1,13 @@
 import { _getPropertyModel as _getPropertyModel_1, ArrayModel as ArrayModel_1, makeObjectEmptyValueCreator as makeObjectEmptyValueCreator_1, NumberModel as NumberModel_1, StringModel as StringModel_1 } from "@hilla/form";
 import AbstractEntityModel_1 from "./AbstractEntityModel.js";
+import MateriaModel_1 from "./MateriaModel.js";
 import RoleModel_1 from "./RoleModel.js";
 import type User_1 from "./User.js";
 class UserModel<T extends User_1 = User_1> extends AbstractEntityModel_1<T> {
     static override createEmptyValue = makeObjectEmptyValueCreator_1(UserModel);
+    get materias(): ArrayModel_1<MateriaModel_1> {
+        return this[_getPropertyModel_1]("materias", (parent, key) => new ArrayModel_1(parent, key, false, (parent, key) => new MateriaModel_1(parent, key, false), { meta: { annotations: [{ name: "jakarta.persistence.ManyToMany" }], javaType: "java.util.List" } }));
+    }
     get username(): StringModel_1 {
         return this[_getPropertyModel_1]("username", (parent, key) => new StringModel_1(parent, key, false, { meta: { javaType: "java.lang.String" } }));
     }
