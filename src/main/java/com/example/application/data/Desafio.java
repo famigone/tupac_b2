@@ -20,6 +20,16 @@ public class Desafio extends AbstractEntity {
     @NotNull
     private String narrativa;
     
+    @ManyToOne 
+    private Practico practico;
+
+    public Practico getPractico() {
+        return practico;
+    }
+
+    public void setPractico(Practico practico) {
+        this.practico = practico;
+    }
 
     public Desafio() {
         

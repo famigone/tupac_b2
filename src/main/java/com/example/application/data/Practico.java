@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.annotation.Nullable;
 import java.sql.Date;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -26,12 +27,17 @@ public class Practico extends AbstractEntity {
 
     }
     
-   @ManyToOne 
-   private Materia materia;
     
-    public String getDescripcion() {
+   public String getDescripcion() {
         return descripcion;
     }
+
+
+   
+    
+    
+    @ManyToOne 
+    private Materia materia;
 
     // nombre de la Practico
     @NotBlank
@@ -42,6 +48,22 @@ public class Practico extends AbstractEntity {
     public String getNombre() {
         return nombre;
     }
+
+
+   @OneToMany(mappedBy="practico") 
+    private List<Desafio> desafios = new LinkedList<>();
+
+
+
+    public List<Desafio> getDesafios() {
+    return desafios;
+}
+
+
+public void setDesafios(List<Desafio> desafios) {
+    this.desafios = desafios;
+}
+
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -65,14 +87,17 @@ public class Practico extends AbstractEntity {
         this.fechaLimite = fechaLimite;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+ 
+
     
 
-     public Materia getMateria() {
-        return materia;
-    }
-
-    public void setMateria(Materia materia) {
-        this.materia = materia;
-    }
-
+ 
 }

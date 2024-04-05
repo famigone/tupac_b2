@@ -3,6 +3,8 @@ package com.example.application.data;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Null;
+
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,9 +27,21 @@ public class Materia extends AbstractEntity {
    @OneToMany(mappedBy="materia") 
     private List<Practico> practicos = new LinkedList<>();
 
+    
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
    
-/*     public List<Practico> getPracticos() {
+public List<Practico> getPracticos() {
+    return practicos;
+}
+
+public void setPracticos(List<Practico> practicos) {
+    this.practicos = practicos;
+}
+
+    /*     public List<Practico> getPracticos() {
         return practicos;
     }
 */
