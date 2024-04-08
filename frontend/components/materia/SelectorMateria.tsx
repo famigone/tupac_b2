@@ -9,12 +9,14 @@ import MateriaRecordModel from "Frontend/generated/com/example/application/servi
 import { Icon } from "@hilla/react-components/Icon.js";
 import { NotEmpty } from "@hilla/form/Validators.js";
 
+
+
 interface MateriaFormProps {
     Materia?: MateriaRecord | null;
-    onSubmit?: (Materia: MateriaRecord) => Promise<void>;
+    
 }
 
-export default function MateriaForm({ Materia, onSubmit }: MateriaFormProps) {
+export default function SelectorMateria({ MateriaSelected }: MateriaFormProps) {
 
     const [Materias, setMaterias] = useState<SelectItem[]>([]);
 
@@ -62,7 +64,8 @@ export default function MateriaForm({ Materia, onSubmit }: MateriaFormProps) {
 
             <div className="flex gap-s items-start">
                 <TextField label="Nombre" {...field(model.nombre)} />
- 
+          
+
             </div>
 
             <div className="flex gap-m"  >

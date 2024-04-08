@@ -36,7 +36,7 @@ export default function MainLayout() {
               </NavLink>
             ) : null}
             {state.user ? (
-              <NavLink className={navLinkClasses} to="/d">
+              <NavLink className={navLinkClasses} to="/practicos">
                 Prácticos
               </NavLink>
             ) : null}

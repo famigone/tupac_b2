@@ -5,45 +5,45 @@ import { useEffect, useState } from 'react';
 import { Grid } from "@hilla/react-components/Grid";
 import { GridColumn } from "@hilla/react-components/GridColumn";
 
-import MateriaRecord from 'Frontend/generated/com/example/application/services/MateriaService/MateriaRecord';
-import { MateriaService } from 'Frontend/generated/endpoints';
-import MateriaForm from './FormPractico';
+import PracticoRecord from 'Frontend/generated/com/example/application/services/PracticoService/PracticoRecord';
+import { PracticoService } from 'Frontend/generated/endpoints';
+import PracticoForm from '../../components/practico/FormPractico';
 import { ConfirmDialog } from '@hilla/react-components/ConfirmDialog.js';
 import { HorizontalLayout } from '@hilla/react-components/HorizontalLayout.js';
 import { Icon } from '@hilla/react-components/Icon.js';
 import { GridSortColumn } from '@hilla/react-components/GridSortColumn.js';
 import { GridFilterColumn } from '@hilla/react-components/GridFilterColumn.js';
 
-export default function HomeMateria() {
-  const [Materias, setMaterias] = useState<MateriaRecord[]>([]);
-  const [selected, setSelected] = useState<MateriaRecord | null>();
+export default function PracticoHome() {
+  const [Practicos, setPracticos] = useState<PracticoRecord[]>([]);
+  const [selected, setSelected] = useState<PracticoRecord | null>();
   const [dialogOpened, setDialogOpened] = useState(false);
   const [deleteHabilitado, setDeleteHabilitado] = useState(true);
 
   useEffect(() => {
-    MateriaService.findAllMaterias().then(setMaterias)
+    PracticoService.findAllPracticos().then(setPracticos)
   }, []);
 
 
-  const onMateriaDeleted = async () => {
+  const onPracticoDeleted = async () => {
     if (selected && selected.id) {
       try {
         // Llamar al servicio para eliminar el registro
-        await MateriaService.delete(selected.id);
+        await PracticoService.delete(selected.id);
         //actualizamos el estado          
-        setMaterias(Materias.filter(Materia => Materia.id != selected.id))
+        setPracticos(Practicos.filter(Practico => Practico.id != selected.id))
       } catch (error) {
-        console.error("Error al eliminar el Materia:", error);
+        console.error("Error al eliminar el Practico:", error);
       }
     }
   };
 
-  async function onMateriaSaved(Materia: MateriaRecord) {
-    const saved = await MateriaService.save(Materia)
-    if (Materia.id) {
-      setMaterias(Materias => Materias.map(current => current.id === saved.id ? saved : current));
+  async function onPracticoSaved(Practico: PracticoRecord) {
+    const saved = await PracticoService.save(Practico)
+    if (Practico.id) {
+      setPracticos(Practicos => Practicos.map(current => current.id === saved.id ? saved : current));
     } else {
-      setMaterias(Materias => [...Materias, saved]);
+      setPracticos(Practicos => [...Practicos, saved]);
     }
     setSelected(saved);
 
@@ -53,20 +53,22 @@ export default function HomeMateria() {
   return (
     <>
       <div className="p-m  gap-m border: 2px">
-            <MateriaForm
-                Materia={selected}
-                onSubmit={onMateriaSaved}
+            <PracticoForm
+                Practico={selected}
+                onSubmit={onPracticoSaved}
             />
       </div>
       <div className="p-m  gap-m">
         <Grid
           theme="row-stripes"
           allRowsVisible
-          items={Materias}
+          items={Practicos}
           onActiveItemChanged={e => setSelected(e.detail.value)}
           selectedItems={[selected]}>
 
           <GridFilterColumn path="nombre" header="NOMBRE" />         
+          <GridFilterColumn path="descripcion" header="DESCRIPCIÓN" />         
+          <GridFilterColumn path="fechaVisible" header="VISIBLE DESDE" />         
         </Grid>
 
         <div style={{ margin: '3px' }} className="flex gap-m gap-s">
@@ -77,13 +79,13 @@ export default function HomeMateria() {
 
         </div>
         <ConfirmDialog          
-          header="Desea eliminar la Materia?"     
+          header="Desea eliminar el Practico?"     
           cancelButtonVisible
           confirmText="Eliminar"
           cancelText="Cancelar"
           opened={dialogOpened}          
           onConfirm={() => {
-            onMateriaDeleted()
+            onPracticoDeleted()
             setDialogOpened(false)
           }}
           onCancel={() => {

@@ -14,14 +14,14 @@ class PracticoModel<T extends Practico_1 = Practico_1> extends AbstractEntityMod
     get nombre(): StringModel_1 {
         return this[_getPropertyModel_1]("nombre", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotBlank_1(), new NotNull_1()], meta: { javaType: "java.lang.String" } }));
     }
+    get fechaVisible(): StringModel_1 {
+        return this[_getPropertyModel_1]("fechaVisible", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.util.Date" } }));
+    }
     get desafios(): ArrayModel_1<DesafioModel_1> {
         return this[_getPropertyModel_1]("desafios", (parent, key) => new ArrayModel_1(parent, key, false, (parent, key) => new DesafioModel_1(parent, key, false), { meta: { annotations: [{ name: "jakarta.persistence.OneToMany" }], javaType: "java.util.List" } }));
     }
     get users(): ArrayModel_1<UserModel_1> {
         return this[_getPropertyModel_1]("users", (parent, key) => new ArrayModel_1(parent, key, false, (parent, key) => new UserModel_1(parent, key, false), { meta: { annotations: [{ name: "jakarta.persistence.ManyToMany" }], javaType: "java.util.List" } }));
-    }
-    get fechaLimite(): StringModel_1 {
-        return this[_getPropertyModel_1]("fechaLimite", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotBlank_1(), new NotNull_1()], meta: { javaType: "java.sql.Date" } }));
     }
 }
 export default PracticoModel;

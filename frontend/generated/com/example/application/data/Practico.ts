@@ -5,8 +5,8 @@ interface Practico extends AbstractEntity_1 {
     id: number;
     descripcion: string;
     nombre: string;
+    fechaVisible: string;
     desafios: Array<Desafio_1>;
     users: Array<User_1>;
-    fechaLimite: string;
 }
 export default Practico;

@@ -20,16 +20,24 @@ public class Materia extends AbstractEntity {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
-
+   
    @OneToMany(mappedBy="materia") 
     private List<Practico> practicos = new LinkedList<>();
 
     @ManyToMany(mappedBy = "materias")    
     private List<User> users = new LinkedList<>();
 
+     // nombre de la materia
+     @NotBlank
+     @NotNull
+     @Column(unique = true)
+     private String nombre;
+
+     public Materia() {
+        
+     }
+
+     
     public List<User> getUsers() {
         return users;
     }
@@ -38,7 +46,10 @@ public class Materia extends AbstractEntity {
         this.users = users;
     }
 
-   
+    public Long getId() {
+        return id;
+    }
+
 public List<Practico> getPracticos() {
     return practicos;
 }
@@ -54,16 +65,8 @@ public void setPracticos(List<Practico> practicos) {
     public void setId(Long id) {
         this.id = id;
     }
-    //nombre de la materia
-    @NotBlank
-    @NotNull      
-    @Column(unique = true)   
-    private String nombre;
 
         
-    public Materia() {
-        
-    }
     
     public String getNombre() {
         return nombre;
