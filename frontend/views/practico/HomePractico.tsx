@@ -39,6 +39,7 @@ export default function PracticoHome() {
   };
 
   async function onPracticoSaved(Practico: PracticoRecord) {
+    console.log("Practico "+Practico)
     const saved = await PracticoService.save(Practico)
     if (Practico.id) {
       setPracticos(Practicos => Practicos.map(current => current.id === saved.id ? saved : current));

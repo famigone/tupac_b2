@@ -1,5 +1,6 @@
 package com.example.application.services;
 
+import com.example.application.data.Materia;
 import com.example.application.data.Practico;
 import com.example.application.data.PracticoRepository;
 import com.example.application.data.Practico;
@@ -34,7 +35,9 @@ public class PracticoService {
             Long id,
             @NotNull @Column(unique = true) String nombre,
             String descripcion,
-            Date fechaVisible) {
+            Date fechaVisible, 
+            Materia materia
+            ) {
     }
 
     public PracticoService(PracticoRepository repository) {
@@ -46,7 +49,9 @@ public class PracticoService {
                 elPractico.getId(),
                 elPractico.getNombre(),
                 elPractico.getDescripcion(),
-                elPractico.getfechaVisible());
+                elPractico.getfechaVisible(), 
+                elPractico.getMateria()
+                );
     }
 
     private PracticoRecord savePractico(PracticoRecord nuevaPractico) {

@@ -40,6 +40,14 @@ public class Practico extends AbstractEntity {
     @ManyToOne
     private Materia materia;
 
+    public Materia getMateria() {
+        return materia;
+    }
+
+    public void setMateria(Materia materia) {
+        this.materia = materia;
+    }
+
     // nombre del desafío
     @NotNull
     private Date fechaVisible;
