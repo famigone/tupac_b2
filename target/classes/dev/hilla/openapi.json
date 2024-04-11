@@ -405,7 +405,7 @@
           "materia" : {
             "anyOf" : [
               {
-                "$ref" : "#/components/schemas/com.example.application.data.Materia"
+                "$ref" : "#/components/schemas/com.example.application.services.PracticoService$MateriaRecord"
               }
             ],
             "x-validation-constraints" : [
@@ -508,6 +508,25 @@
                 "name" : "jakarta.persistence.Version"
               }
             ]
+          }
+        }
+      },
+      "com.example.application.services.PracticoService$MateriaRecord" : {
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "integer",
+            "format" : "int64",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.Long"
+          },
+          "nombre" : {
+            "type" : "string",
+            "x-java-type" : "java.lang.String"
           }
         }
       },

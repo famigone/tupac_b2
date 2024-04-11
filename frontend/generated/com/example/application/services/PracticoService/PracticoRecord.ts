@@ -1,9 +1,9 @@
-import type Materia_1 from "../../data/Materia.js";
+import type MateriaRecord_1 from "./MateriaRecord.js";
 interface PracticoRecord {
     id: number;
     nombre: string;
     descripcion: string;
     fechaVisible: string;
-    materia: Materia_1;
+    materia: MateriaRecord_1;
 }
 export default PracticoRecord;

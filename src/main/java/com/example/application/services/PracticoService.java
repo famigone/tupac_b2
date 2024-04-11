@@ -36,10 +36,15 @@ public class PracticoService {
             @NotNull String nombre,
             @NotNull String descripcion,
             @NotNull Date fechaVisible, 
-            @NotNull Materia materia
+            @NotNull MateriaRecord materia
             ) {
     }
-
+    public record MateriaRecord(
+        @NotNull
+        Long id,
+        String nombre
+) {
+}
     public PracticoService(PracticoRepository repository) {
         this.repository = repository;
     }
@@ -50,7 +55,11 @@ public class PracticoService {
                 elPractico.getNombre(),
                 elPractico.getDescripcion(),
                 elPractico.getfechaVisible(), 
-                elPractico.getMateria()
+                new MateriaRecord(
+                    elPractico.getMateria().getId(),
+                    elPractico.getMateria().getNombre()
+                )
+                
                 );
     }
 
@@ -60,9 +69,7 @@ public class PracticoService {
         dbPractico.setNombre(nuevaPractico.nombre);
         dbPractico.setDescripcion(nuevaPractico.descripcion);
         dbPractico.setfechaVisible(nuevaPractico.fechaVisible);
-        System.out.println("______________________________________");
-        System.out.println("EL dbPractico "+dbPractico.getMateria() );
-        System.out.println("______________________________________");
+      //  dbPractico.setMateria(nuevaPractico.materia);
         // Guarda el nuevo organismo en la base de datos
         Practico savedPractico = repository.save(dbPractico);
 

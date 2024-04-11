@@ -8,6 +8,7 @@ com/example/application/services/PracticoService/PracticoRecord.ts
 com/example/application/data/Materia.ts
 com/example/application/data/Role.ts
 com/example/application/data/AbstractEntity.ts
+com/example/application/services/PracticoService/MateriaRecord.ts
 com/example/application/data/Practico.ts
 com/example/application/data/Desafio.ts
 connect-client.default.ts
@@ -18,5 +19,6 @@ com/example/application/services/PracticoService/PracticoRecordModel.ts
 com/example/application/data/MateriaModel.ts
 com/example/application/data/RoleModel.ts
 com/example/application/data/AbstractEntityModel.ts
+com/example/application/services/PracticoService/MateriaRecordModel.ts
 com/example/application/data/PracticoModel.ts
 com/example/application/data/DesafioModel.ts
