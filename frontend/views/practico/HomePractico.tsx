@@ -67,7 +67,7 @@ export default function PracticoHome() {
           items={Practicos}
           onActiveItemChanged={e => setSelected(e.detail.value)}
           selectedItems={[selected]}>
-          <GridFilterColumn path="materia.id" header="MATERIA" />           
+          <GridFilterColumn path="materia.nombre" header="MATERIA" />           
           <GridFilterColumn path="nombre" header="NOMBRE" />         
           <GridFilterColumn path="descripcion" header="DESCRIPCIÓN" />         
           <GridFilterColumn path="fechaVisible" header="VISIBLE DESDE" />                   

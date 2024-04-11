@@ -19,17 +19,21 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import com.example.application.data.MateriaRepository;
 
 @Service
 @AnonymousAllowed
 @BrowserCallable
 public class PracticoService {
-
-    private final PracticoRepository repository;
+    @Autowired
+    private final PracticoRepository PracticoRepository;
+    @Autowired
+    private final MateriaRepository MateriaRepository;
 
     public record PracticoRecord(
             Long id,
@@ -45,8 +49,11 @@ public class PracticoService {
         String nombre
 ) {
 }
-    public PracticoService(PracticoRepository repository) {
-        this.repository = repository;
+    public PracticoService(PracticoRepository PracticoRepository,
+                           MateriaRepository MateriaRepository
+     ) {
+        this.PracticoRepository = PracticoRepository;
+        this.MateriaRepository = MateriaRepository;
     }
 
     private PracticoRecord toPracticoRecord(Practico elPractico) {
@@ -66,36 +73,37 @@ public class PracticoService {
     private PracticoRecord savePractico(PracticoRecord nuevaPractico) {
         // Crea un nuevo objeto Practico y asigna los valores del objeto recibido
         Practico dbPractico = new Practico();
+        var materia = MateriaRepository.findById(nuevaPractico.materia.id()).orElseThrow();
         dbPractico.setNombre(nuevaPractico.nombre);
         dbPractico.setDescripcion(nuevaPractico.descripcion);
         dbPractico.setfechaVisible(nuevaPractico.fechaVisible);
-      //  dbPractico.setMateria(nuevaPractico.materia);
+        dbPractico.setMateria(materia);
         // Guarda el nuevo organismo en la base de datos
-        Practico savedPractico = repository.save(dbPractico);
+        Practico savedPractico = PracticoRepository.save(dbPractico);
 
         // Devuelve el organismo guardado después de convertirlo a PracticoRecord
         return toPracticoRecord(savedPractico);
     }
 
     private PracticoRecord updatePractico(PracticoRecord elPractico) {
-        var dbPractico = repository.findById(elPractico.id).orElseThrow();
-
+        var dbPractico = PracticoRepository.findById(elPractico.id).orElseThrow();
+        var materia = MateriaRepository.findById(elPractico.materia.id()).orElseThrow();
         dbPractico.setNombre(elPractico.nombre);
         dbPractico.setNombre(elPractico.nombre);
         dbPractico.setDescripcion(elPractico.descripcion);
         dbPractico.setfechaVisible(elPractico.fechaVisible);
-
-        Practico savedPractico = repository.save(dbPractico);
+        dbPractico.setMateria(materia);
+        Practico savedPractico = PracticoRepository.save(dbPractico);
 
         return toPracticoRecord(savedPractico);
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        PracticoRepository.deleteById(id);
     }
 
     public List<PracticoRecord> findAllPracticos() {
-        Stream<Practico> listaResul = repository.findAllWithMateria().stream();
+        Stream<Practico> listaResul = PracticoRepository.findAllWithMateria().stream();
 
         return listaResul.map(this::toPracticoRecord).toList();
     }
