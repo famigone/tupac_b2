@@ -1,4 +1,4 @@
-import { _getPropertyModel as _getPropertyModel_1, ArrayModel as ArrayModel_1, makeObjectEmptyValueCreator as makeObjectEmptyValueCreator_1, NotBlank as NotBlank_1, NotNull as NotNull_1, NumberModel as NumberModel_1, StringModel as StringModel_1 } from "@hilla/form";
+import { _getPropertyModel as _getPropertyModel_1, ArrayModel as ArrayModel_1, makeObjectEmptyValueCreator as makeObjectEmptyValueCreator_1, NotNull as NotNull_1, NumberModel as NumberModel_1, StringModel as StringModel_1 } from "@hilla/form";
 import AbstractEntityModel_1 from "./AbstractEntityModel.js";
 import type Materia_1 from "./Materia.js";
 import PracticoModel_1 from "./PracticoModel.js";
@@ -15,7 +15,7 @@ class MateriaModel<T extends Materia_1 = Materia_1> extends AbstractEntityModel_
         return this[_getPropertyModel_1]("users", (parent, key) => new ArrayModel_1(parent, key, false, (parent, key) => new UserModel_1(parent, key, false), { meta: { annotations: [{ name: "jakarta.persistence.ManyToMany" }], javaType: "java.util.List" } }));
     }
     get nombre(): StringModel_1 {
-        return this[_getPropertyModel_1]("nombre", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotBlank_1(), new NotNull_1()], meta: { javaType: "java.lang.String" } }));
+        return this[_getPropertyModel_1]("nombre", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.String" } }));
     }
 }
 export default MateriaModel;

@@ -33,10 +33,10 @@ public class PracticoService {
 
     public record PracticoRecord(
             Long id,
-            @NotNull @Column(unique = true) String nombre,
-            String descripcion,
-            Date fechaVisible, 
-            Materia materia
+            @NotNull String nombre,
+            @NotNull String descripcion,
+            @NotNull Date fechaVisible, 
+            @NotNull Materia materia
             ) {
     }
 
@@ -61,7 +61,7 @@ public class PracticoService {
         dbPractico.setDescripcion(nuevaPractico.descripcion);
         dbPractico.setfechaVisible(nuevaPractico.fechaVisible);
         System.out.println("______________________________________");
-        System.out.println("EL dbPractico "+dbPractico.getDescripcion());
+        System.out.println("EL dbPractico "+dbPractico.getMateria() );
         System.out.println("______________________________________");
         // Guarda el nuevo organismo en la base de datos
         Practico savedPractico = repository.save(dbPractico);
@@ -88,7 +88,7 @@ public class PracticoService {
     }
 
     public List<PracticoRecord> findAllPracticos() {
-        Stream<Practico> listaResul = repository.findAll().stream();
+        Stream<Practico> listaResul = repository.findAllWithMateria().stream();
 
         return listaResul.map(this::toPracticoRecord).toList();
     }

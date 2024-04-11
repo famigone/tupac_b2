@@ -63,9 +63,15 @@ export default function PracticoForm({ Practico, onSubmit }: PracticoFormProps) 
     //control de vacíos del lado del cliente
 
     const nombre  =  useFormPart(model.nombre);
-   // const materia =  useFormPart(model.materia.id);
+    
 
-
+    useEffect(() => {
+        nombre.addValidator(
+            new NotEmpty({
+                message: 'Por favor, ingrese un nombre'
+            }));
+        
+    }, []);
 
 
     return (

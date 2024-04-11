@@ -27,8 +27,7 @@ public class Materia extends AbstractEntity {
     @ManyToMany(mappedBy = "materias")    
     private List<User> users = new LinkedList<>();
 
-     // nombre de la materia
-     @NotBlank
+     // nombre de la materia     
      @NotNull
      @Column(unique = true)
      private String nombre;

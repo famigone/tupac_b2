@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "practico")
+
 public class Practico extends AbstractEntity {
 
     @Id

@@ -10,10 +10,10 @@ class PracticoRecordModel<T extends PracticoRecord_1 = PracticoRecord_1> extends
         return this[_getPropertyModel_1]("nombre", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.String" } }));
     }
     get descripcion(): StringModel_1 {
-        return this[_getPropertyModel_1]("descripcion", (parent, key) => new StringModel_1(parent, key, false, { meta: { javaType: "java.lang.String" } }));
+        return this[_getPropertyModel_1]("descripcion", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.String" } }));
     }
     get fechaVisible(): StringModel_1 {
-        return this[_getPropertyModel_1]("fechaVisible", (parent, key) => new StringModel_1(parent, key, false, { meta: { javaType: "java.util.Date" } }));
+        return this[_getPropertyModel_1]("fechaVisible", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.util.Date" } }));
     }
     get materia(): MateriaModel_1 {
         return this[_getPropertyModel_1]("materia", (parent, key) => new MateriaModel_1(parent, key, false));

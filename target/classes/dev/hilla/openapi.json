@@ -385,17 +385,32 @@
           },
           "descripcion" : {
             "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
             "x-java-type" : "java.lang.String"
           },
           "fechaVisible" : {
             "type" : "string",
             "format" : "date",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
             "x-java-type" : "java.util.Date"
           },
           "materia" : {
             "anyOf" : [
               {
                 "$ref" : "#/components/schemas/com.example.application.data.Materia"
+              }
+            ],
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
               }
             ]
           }
@@ -454,9 +469,6 @@
               "nombre" : {
                 "type" : "string",
                 "x-validation-constraints" : [
-                  {
-                    "simpleName" : "NotBlank"
-                  },
                   {
                     "simpleName" : "NotNull"
                   }

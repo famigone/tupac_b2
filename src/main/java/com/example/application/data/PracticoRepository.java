@@ -17,6 +17,9 @@ public interface PracticoRepository extends JpaRepository<Practico, Long>{
     
    // List<Practico> findPracticoesByPerfiles(Long id);    
    
+
+   @Query("SELECT p FROM Practico p JOIN FETCH p.materia")
+   List<Practico> findAllWithMateria();
    
 
    //List<Practico> findPractico(@Param("perfilId") Long perfilId); 

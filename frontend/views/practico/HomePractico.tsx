@@ -39,7 +39,8 @@ export default function PracticoHome() {
   };
 
   async function onPracticoSaved(Practico: PracticoRecord) {
-    console.log("Practico "+Practico)
+    console.log("Materia "+Practico.materia.id)
+    console.log("Practico "+Practico.nombre)
     const saved = await PracticoService.save(Practico)
     if (Practico.id) {
       setPracticos(Practicos => Practicos.map(current => current.id === saved.id ? saved : current));
@@ -66,10 +67,10 @@ export default function PracticoHome() {
           items={Practicos}
           onActiveItemChanged={e => setSelected(e.detail.value)}
           selectedItems={[selected]}>
-
+          <GridFilterColumn path="materia.id" header="MATERIA" />           
           <GridFilterColumn path="nombre" header="NOMBRE" />         
           <GridFilterColumn path="descripcion" header="DESCRIPCIÓN" />         
-          <GridFilterColumn path="fechaVisible" header="VISIBLE DESDE" />         
+          <GridFilterColumn path="fechaVisible" header="VISIBLE DESDE" />                   
         </Grid>
 
         <div style={{ margin: '3px' }} className="flex gap-m gap-s">
