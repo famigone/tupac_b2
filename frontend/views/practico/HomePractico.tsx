@@ -78,7 +78,8 @@ export default function PracticoHome() {
           <Button disabled={selected == null} theme="primary error small" onClick={() => setDialogOpened(true)} ><Icon icon="vaadin:close" /> Eliminar</Button>
           <Button onClick={() => setSelected(null)} theme="primary small" ><Icon icon="vaadin:refresh" />
             Nuevo</Button>
-
+            <Button onClick={() => setSelected(null)} theme="primary small" ><Icon icon="vaadin:refresh" />
+          Desafíos</Button>
         </div>
         <ConfirmDialog          
           header="Desea eliminar el Practico?"     
