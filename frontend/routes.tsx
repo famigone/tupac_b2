@@ -6,6 +6,7 @@ import { lazy } from 'react';
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
 import HomeMateria from './views/materia/HomeMateria';
 import HomePractico from './views/practico/HomePractico';
+import HomeDesafio from './views/practico/HomeDesafio';
 const AboutView = lazy(async () => import('Frontend/views/about/AboutView.js'));
 
 export const routes = protectRoutes([
@@ -15,7 +16,8 @@ export const routes = protectRoutes([
     children: [
       { path: '/', element: <HelloWorldView />, handle: { title: 'TUPAC', requiresLogin: true } },
       { path: '/materias', element: <HomeMateria />, handle: { title: 'Materias', requiresLogin: true } },
-      { path: '/practicos', element: <HomePractico />, handle: { title: 'Prácticos', requiresLogin: true } },
+      { path: '/practicos', element: <HomePractico />, handle: { title: 'Prácticos', requiresLogin: true } },      
+      { path: '/desafios/:practicoid', element: <HomeDesafio />, handle: { title: 'Desafíos', requiresLogin: true } },      
       { path: '/about', element: <AboutView />, handle: { title: 'About', requiresLogin: true } },
     ],
   },

@@ -17,7 +17,8 @@ public interface DesafioRepository extends JpaRepository<Desafio, Long>{
     
    // List<Practico> findPracticoesByPerfiles(Long id);    
    
-   
+   @Query("SELECT d FROM Desafio d JOIN FETCH d.practico")
+   List<Desafio> findAllWithPracticos();
 
    //List<Practico> findPractico(@Param("perfilId") Long perfilId); 
 

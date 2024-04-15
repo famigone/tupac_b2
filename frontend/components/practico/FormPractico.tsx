@@ -76,10 +76,11 @@ export default function PracticoForm({ Practico, onSubmit }: PracticoFormProps) 
 
     return (
         <>
-            <div className="flex gap-s items-start"></div>
-            <Select label="Materia" items={materias} {...field(model.materia.id)} />
+            
+            
                 
             <div className="flex gap-s items-start">
+            <Select label="Materia" items={materias} {...field(model.materia.id)} />
                 <TextField label="Nombre" {...field(model.nombre)} />
                 <TextArea label="Descripción" {...field(model.descripcion)} />
                 <DatePicker label="Visible desde" {...field(model.fechaVisible)} />                                    

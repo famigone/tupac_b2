@@ -13,9 +13,8 @@ import { HorizontalLayout } from '@hilla/react-components/HorizontalLayout.js';
 import { Icon } from '@hilla/react-components/Icon.js';
 import { GridSortColumn } from '@hilla/react-components/GridSortColumn.js';
 import { GridFilterColumn } from '@hilla/react-components/GridFilterColumn.js';
-import { Link } from 'react-router-dom';
-
-export default function HomePractico() {
+import { useParams } from 'react-router-dom';
+export default function HomeDesafio() {
   const [Practicos, setPracticos] = useState<PracticoRecord[]>([]);
   const [selected, setSelected] = useState<PracticoRecord | null>();
   const [dialogOpened, setDialogOpened] = useState(false);
@@ -24,7 +23,8 @@ export default function HomePractico() {
   useEffect(() => {
     PracticoService.findAllPracticos().then(setPracticos)
   }, []);
-
+  
+  //let { tipo } = useParams();
 
   const onPracticoDeleted = async () => {
     if (selected && selected.id) {
@@ -79,10 +79,8 @@ export default function HomePractico() {
           <Button disabled={selected == null} theme="primary error small" onClick={() => setDialogOpened(true)} ><Icon icon="vaadin:close" /> Eliminar</Button>
           <Button onClick={() => setSelected(null)} theme="primary small" ><Icon icon="vaadin:refresh" />
             Nuevo</Button>
-
-          <Link to={`/desafios/${selected?.id}`}>
-            <Button theme="primary small" ><Icon icon="vaadin:calc" /> Desafios</Button>
-          </Link>
+          <Button onClick={() => setSelected(null)} theme="primary small" ><Icon icon="vaadin:calc" />
+            Desafíos</Button>
         </div>
         <ConfirmDialog
           header="Desea eliminar el Practico?"
