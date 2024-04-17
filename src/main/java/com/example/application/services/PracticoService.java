@@ -49,7 +49,12 @@ public class PracticoService {
         String nombre
 ) {
 }
-    public PracticoService(PracticoRepository PracticoRepository,
+   
+public PracticoRecord findById(long practicoid){
+    var elPractico = PracticoRepository.findById(practicoid).orElseThrow();
+    return  toPracticoRecord(elPractico);
+}
+public PracticoService(PracticoRepository PracticoRepository,
                            MateriaRepository MateriaRepository
      ) {
         this.PracticoRepository = PracticoRepository;
@@ -69,6 +74,8 @@ public class PracticoService {
                 
                 );
     }
+
+
 
     private PracticoRecord savePractico(PracticoRecord nuevaPractico) {
         // Crea un nuevo objeto Practico y asigna los valores del objeto recibido

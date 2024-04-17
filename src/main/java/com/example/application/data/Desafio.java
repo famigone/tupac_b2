@@ -55,21 +55,11 @@ public class Desafio extends AbstractEntity {
         this.narrativa = narrativa;
     }
 
-    // nombre del desafío
-    @NotBlank
-    @NotNull
-    private Number orden;
-
-    public Number getOrden() {
-        return orden;
-    }
-
-    public void setOrden(Number orden) {
-        this.orden = orden;
-    }
+    @NotNull    
+    private Integer ordenamiento; 
 
     //fk al tp
-    @NotBlank
+    
     @NotNull
     private Long tpId;
 
@@ -79,6 +69,22 @@ public class Desafio extends AbstractEntity {
 
     public void setTpId(Long tpId) {
         this.tpId = tpId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getOrdenamiento() {
+        return ordenamiento;
+    }
+
+    public void setOrdenamiento(Integer ordenamiento) {
+        this.ordenamiento = ordenamiento;
     }
 
 }

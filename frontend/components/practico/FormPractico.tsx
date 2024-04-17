@@ -17,7 +17,9 @@ interface PracticoFormProps {
 }
 
 export default function PracticoForm({ Practico, onSubmit }: PracticoFormProps) {
-    const [materias, setMaterias] = useState<SelectItem[]>([]);
+    const [materias, setMaterias] = useState<SelectItem[]>([]); 
+    const { field, model, submit, reset, read } = useForm(PracticoRecordModel, { onSubmit });
+    
     useEffect(() => {
         getMaterias();
     }, []);
@@ -34,34 +36,11 @@ export default function PracticoForm({ Practico, onSubmit }: PracticoFormProps) 
 
     }
 
-    const [Practicos, setPracticos] = useState<SelectItem[]>([]);
-
-    const { field, model, submit, reset, read } = useForm(PracticoRecordModel, { onSubmit });
-    const eliminarPractico = async () => {
-        if (Practico && Practico.id) {
-            try {
-                // Llamar al servicio para eliminar el registro
-                await PracticoService.delete(Practico.id);
-
-                // Si la eliminación es exitosa, ejecutar la función onSubmit para actualizar el estado de la lista de Practicoes
-                if (onSubmit) {
-                    await onSubmit(Practico);
-                }
-
-                // Limpiar el formulario después de eliminar el registro
-                reset();
-            } catch (error) {
-                console.error("Error al eliminar el Practico:", error);
-            }
-        }
-    };
-
     useEffect(() => {
         read(Practico);
     }, [Practico]);
 
     //control de vacíos del lado del cliente
-
     const nombre  =  useFormPart(model.nombre);
     
 
@@ -69,28 +48,22 @@ export default function PracticoForm({ Practico, onSubmit }: PracticoFormProps) 
         nombre.addValidator(
             new NotEmpty({
                 message: 'Por favor, ingrese un nombre'
-            }));
-        
+            }));        
     }, []);
 
-
     return (
-        <>
-            
-            
-                
+        <>            
             <div className="flex gap-s items-start">
-            <Select label="Materia" items={materias} {...field(model.materia.id)} />
+                <Select label="Materia" items={materias} {...field(model.materia.id)} />
                 <TextField label="Nombre" {...field(model.nombre)} />
                 <TextArea label="Descripción" {...field(model.descripcion)} />
                 <DatePicker label="Visible desde" {...field(model.fechaVisible)} />                                    
-
             </div>
 
             <div className="flex gap-m"  >
                 <Button onClick={submit} theme="primary small"> <Icon icon="vaadin:arrow-circle-down" />
-                    Guardar</Button>
-
+                    Guardar
+                </Button>
             </div>
 
         </>

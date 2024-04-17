@@ -349,6 +349,46 @@
         }
       }
     },
+    "/PracticoService/findById" : {
+      "post" : {
+        "tags" : [
+          "PracticoService"
+        ],
+        "operationId" : "PracticoService_findById_POST",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "practicoid" : {
+                    "type" : "integer",
+                    "format" : "int64",
+                    "x-java-type" : "long"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "anyOf" : [
+                    {
+                      "$ref" : "#/components/schemas/com.example.application.services.PracticoService$PracticoRecord"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/PracticoService/save" : {
       "post" : {
         "tags" : [
@@ -467,14 +507,15 @@
             ],
             "x-java-type" : "java.lang.String"
           },
-          "orden" : {
-            "type" : "object",
+          "ordenamiento" : {
+            "type" : "integer",
+            "format" : "int32",
             "x-validation-constraints" : [
               {
                 "simpleName" : "NotNull"
               }
             ],
-            "x-java-type" : "java.lang.Number"
+            "x-java-type" : "java.lang.Integer"
           },
           "practico" : {
             "anyOf" : [
@@ -800,6 +841,16 @@
           {
             "type" : "object",
             "properties" : {
+              "id" : {
+                "type" : "integer",
+                "format" : "int64",
+                "x-java-type" : "java.lang.Long",
+                "x-annotations" : [
+                  {
+                    "name" : "jakarta.persistence.Id"
+                  }
+                ]
+              },
               "narrativa" : {
                 "type" : "string",
                 "x-validation-constraints" : [
@@ -840,25 +891,20 @@
                   }
                 ]
               },
-              "orden" : {
-                "type" : "object",
+              "ordenamiento" : {
+                "type" : "integer",
+                "format" : "int32",
                 "x-validation-constraints" : [
-                  {
-                    "simpleName" : "NotBlank"
-                  },
                   {
                     "simpleName" : "NotNull"
                   }
                 ],
-                "x-java-type" : "java.lang.Number"
+                "x-java-type" : "java.lang.Integer"
               },
               "tpId" : {
                 "type" : "integer",
                 "format" : "int64",
                 "x-validation-constraints" : [
-                  {
-                    "simpleName" : "NotBlank"
-                  },
                   {
                     "simpleName" : "NotNull"
                   }

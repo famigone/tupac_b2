@@ -38,7 +38,7 @@ public class DesafioService {
     public record DesafioRecord(
              Long id,            
             @NotNull String narrativa,
-            @NotNull Number orden, 
+            @NotNull Integer ordenamiento, 
             @NotNull PracticoRecord practico
             ) {
     }
@@ -59,7 +59,7 @@ public class DesafioService {
         return new DesafioRecord(
                 elDesafio.getId(),
                 elDesafio.getNarrativa(),
-                elDesafio.getOrden(),                
+                elDesafio.getOrdenamiento() ,                
                 new PracticoRecord(
                     elDesafio.getPractico().getId(),
                     elDesafio.getPractico().getNombre()
@@ -71,10 +71,12 @@ public class DesafioService {
     private DesafioRecord saveDesafio(DesafioRecord nuevaDesafio) {
         // Crea un nuevo objeto Desafio y asigna los valores del objeto recibido
         Desafio dbDesafio = new Desafio();
-        var Practico = PracticoRepository.findById(nuevaDesafio.practico.id()).orElseThrow();
+        //var Practico = PracticoRepository.findById(nuevaDesafio.practico.id()).orElseThrow();
         dbDesafio.setNarrativa(nuevaDesafio.narrativa);
-        dbDesafio.setOrden(nuevaDesafio.orden);
-        dbDesafio.setPractico(Practico);
+        dbDesafio.setOrdenamiento(nuevaDesafio.ordenamiento );
+        Practico elTp = new Practico();
+        elTp.setId(nuevaDesafio.practico.id);                
+        dbDesafio.setPractico(elTp);
         // Guarda el nuevo organismo en la base de datos
         Desafio savedDesafio = DesafioRepository.save(dbDesafio);
 
@@ -86,7 +88,7 @@ public class DesafioService {
         var dbDesafio = DesafioRepository.findById(elDesafio.id).orElseThrow();
         var Practico = PracticoRepository.findById(elDesafio.practico.id()).orElseThrow();
         dbDesafio.setNarrativa(elDesafio.narrativa); 
-        dbDesafio.setOrden(elDesafio.orden);        
+        dbDesafio.setOrdenamiento(elDesafio.ordenamiento );        
         dbDesafio.setPractico(Practico);
         Desafio savedDesafio = DesafioRepository.save(dbDesafio);
 

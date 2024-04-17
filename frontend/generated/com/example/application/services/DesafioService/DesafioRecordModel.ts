@@ -9,8 +9,8 @@ class DesafioRecordModel<T extends DesafioRecord_1 = DesafioRecord_1> extends Ob
     get narrativa(): StringModel_1 {
         return this[_getPropertyModel_1]("narrativa", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.String" } }));
     }
-    get orden(): ObjectModel_1 {
-        return this[_getPropertyModel_1]("orden", (parent, key) => new ObjectModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.Number" } }));
+    get ordenamiento(): NumberModel_1 {
+        return this[_getPropertyModel_1]("ordenamiento", (parent, key) => new NumberModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.Integer" } }));
     }
     get practico(): PracticoRecordModel_1 {
         return this[_getPropertyModel_1]("practico", (parent, key) => new PracticoRecordModel_1(parent, key, false));
