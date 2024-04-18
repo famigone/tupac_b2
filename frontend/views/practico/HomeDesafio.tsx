@@ -48,7 +48,11 @@ export default function HomeDesafio() {
     }
   };
 
-  async function onDesafioSaved(Desafio: DesafioRecord) {
+  async function onDesafioSaved(Desafio: DesafioRecord) {    
+    if (Practico?.id) {
+      Desafio.practico.id = Practico?.id;
+      Desafio.practico.nombre = Practico?.nombre;      
+    }
     
     const saved = await DesafioService.save(Desafio)
     if (Desafio.id) {

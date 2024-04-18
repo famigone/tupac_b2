@@ -56,6 +56,7 @@ public class DesafioService {
     }
 
     private DesafioRecord toDesafioRecord(Desafio elDesafio) {
+        //System.out.println(elDesafio);
         return new DesafioRecord(
                 elDesafio.getId(),
                 elDesafio.getNarrativa(),
@@ -73,10 +74,10 @@ public class DesafioService {
         Desafio dbDesafio = new Desafio();
         //var Practico = PracticoRepository.findById(nuevaDesafio.practico.id()).orElseThrow();
         dbDesafio.setNarrativa(nuevaDesafio.narrativa);
-        dbDesafio.setOrdenamiento(nuevaDesafio.ordenamiento );
+        dbDesafio.setOrdenamiento(nuevaDesafio.ordenamiento );        
         Practico elTp = new Practico();
         elTp.setId(nuevaDesafio.practico.id);                
-        dbDesafio.setPractico(elTp);
+        dbDesafio.setPractico(elTp);        
         // Guarda el nuevo organismo en la base de datos
         Desafio savedDesafio = DesafioRepository.save(dbDesafio);
 

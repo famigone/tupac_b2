@@ -900,16 +900,6 @@
                   }
                 ],
                 "x-java-type" : "java.lang.Integer"
-              },
-              "tpId" : {
-                "type" : "integer",
-                "format" : "int64",
-                "x-validation-constraints" : [
-                  {
-                    "simpleName" : "NotNull"
-                  }
-                ],
-                "x-java-type" : "java.lang.Long"
               }
             }
           }

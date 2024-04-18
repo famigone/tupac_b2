@@ -60,16 +60,7 @@ public class Desafio extends AbstractEntity {
 
     //fk al tp
     
-    @NotNull
-    private Long tpId;
-
-    public Long getTpId() {
-        return tpId;
-    }
-
-    public void setTpId(Long tpId) {
-        this.tpId = tpId;
-    }
+  
 
     public Long getId() {
         return id;

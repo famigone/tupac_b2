@@ -7,6 +7,5 @@ interface Desafio extends AbstractEntity_1 {
     practico: Practico_1;
     users: Array<User_1>;
     ordenamiento: number;
-    tpId: number;
 }
 export default Desafio;

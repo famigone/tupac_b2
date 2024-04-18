@@ -20,8 +20,5 @@ class DesafioModel<T extends Desafio_1 = Desafio_1> extends AbstractEntityModel_
     get ordenamiento(): NumberModel_1 {
         return this[_getPropertyModel_1]("ordenamiento", (parent, key) => new NumberModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.Integer" } }));
     }
-    get tpId(): NumberModel_1 {
-        return this[_getPropertyModel_1]("tpId", (parent, key) => new NumberModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.Long" } }));
-    }
 }
 export default DesafioModel;
