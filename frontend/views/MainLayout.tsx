@@ -28,13 +28,20 @@ export default function MainLayout() {
     <AppLayout primarySection="drawer">
       <div slot="drawer" className="flex flex-col justify-between h-full p-m">
         <header className="flex flex-col gap-m">
-          <h1 className="text-l m-0">Tupac IDE</h1>
+          <h1 className="text-l m-0">TUPAC</h1>
           <nav>
             {state.user ? (
+              <>
               <NavLink className={navLinkClasses} to="/materias">
                 Materias
+              </NavLink>              
+              <NavLink className={navLinkClasses} to="/materia">
+                Materias Estudiantes
               </NavLink>
-            ) : null}
+              </>
+            ) : 
+              null
+            }
             {state.user ? (
               <NavLink className={navLinkClasses} to="/practicos">
                 Prácticos

@@ -16,6 +16,7 @@ import { GridFilterColumn } from '@hilla/react-components/GridFilterColumn.js';
 import { useParams } from 'react-router-dom';
 import FormDesafio from 'Frontend/components/desafios/FormDesafio';
 import DesafioRecord from 'Frontend/generated/com/example/application/services/DesafioService/DesafioRecord';
+import { Dialog } from '@hilla/react-components/Dialog.js';
 export default function HomeDesafio() {
   const [Desafios, setDesafios] = useState<DesafioRecord[]>([]);
   const [Desafio, setDesafio] = useState<DesafioRecord>();
@@ -23,6 +24,7 @@ export default function HomeDesafio() {
   const [Practico, setPractico] = useState<PracticoRecord | null>();
   const [selected, setSelected] = useState<DesafioRecord | null>();
   const [dialogOpened, setDialogOpened] = useState(false);
+  const [testOpened, setTestOpened] = useState(false);
   const [deleteHabilitado, setDeleteHabilitado] = useState(true);
   let { practicoid } = useParams();
 
@@ -48,12 +50,12 @@ export default function HomeDesafio() {
     }
   };
 
-  async function onDesafioSaved(Desafio: DesafioRecord) {    
+  async function onDesafioSaved(Desafio: DesafioRecord) {
     if (Practico?.id) {
       Desafio.practico.id = Practico?.id;
-      Desafio.practico.nombre = Practico?.nombre;      
+      Desafio.practico.nombre = Practico?.nombre;
     }
-    
+
     const saved = await DesafioService.save(Desafio)
     if (Desafio.id) {
       setDesafios(Desafios => Desafios.map(current => current.id === saved.id ? saved : current));
@@ -67,7 +69,7 @@ export default function HomeDesafio() {
 
   return (
     <>
-      
+
       <div className="p-m  gap-m border: 2px card">
         <h4>{Practico?.nombre}</h4>
         <p>{Practico?.materia.nombre}</p>
@@ -88,7 +90,7 @@ export default function HomeDesafio() {
           onActiveItemChanged={e => setSelected(e.detail.value)}
           selectedItems={[selected]}>
           <GridFilterColumn path="narrativa" header="NARRATIVA" />
-          <GridFilterColumn path="orden" header="ORDEN" />          
+          <GridFilterColumn path="orden" header="ORDEN" />
         </Grid>
 
         <div style={{ margin: '3px' }} className="flex gap-m gap-s">
@@ -96,8 +98,8 @@ export default function HomeDesafio() {
           <Button disabled={selected == null} theme="primary error small" onClick={() => setDialogOpened(true)} ><Icon icon="vaadin:close" /> Eliminar</Button>
           <Button onClick={() => setSelected(null)} theme="primary small" ><Icon icon="vaadin:refresh" />
             Nuevo</Button>
-          <Button onClick={() => setSelected(null)} theme="primary small" ><Icon icon="vaadin:calc" />
-            Desafíos</Button>
+          <Button disabled={selected == null} onClick={() => setTestOpened(true)} theme="primary small" ><Icon icon="vaadin:calc" />
+            Casos de Test</Button>
         </div>
         <ConfirmDialog
           header="Desea eliminar el Desafío?"
@@ -113,7 +115,22 @@ export default function HomeDesafio() {
             setDialogOpened(false)
           }}
         />
-
+        <Dialog
+          theme="no-padding"
+          header-title="Ingresá el caso de test"
+          opened={testOpened}
+          onOpenedChanged={({ detail }) => setTestOpened(detail.value)}
+          footerRenderer={() => (
+            <Button theme="primary" onClick={() => setTestOpened(false)}>
+              Cerrar
+            </Button>
+          )}
+        >
+          <Grid  style={{ width: '500px', maxWidth: '100%' }}>
+            
+            
+          </Grid>
+        </Dialog>
       </div>
     </>
   );
