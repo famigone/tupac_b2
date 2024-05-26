@@ -4,7 +4,7 @@ import { TextField } from '@hilla/react-components/TextField.js';
 import { useEffect, useState } from 'react';
 import { Grid } from "@hilla/react-components/Grid";
 import { GridColumn } from "@hilla/react-components/GridColumn";
-
+import MateriaCard from "Frontend/components/materia/MateriaCard";
 import MateriaRecord from 'Frontend/generated/com/example/application/services/MateriaService/MateriaRecord';
 import { MateriaService } from 'Frontend/generated/endpoints';
 import MateriaForm from './MateriaForm';
@@ -54,8 +54,15 @@ export default function HomeMateriaEstudiante() {
     <>
       
       <div className="p-m  gap-m">
-        
+      <HorizontalLayout theme="spacing padding">
+     {Materias.map((unaMateria: MateriaRecord, index: number) => (
+        <MateriaCard 
+          key={index} 
+          nombre={unaMateria.nombre}           
+        />
+      ))}
       
+      </HorizontalLayout>
       </div>
     </>
   );
