@@ -34,7 +34,15 @@ public class MateriaService {
             // nombre de la aplicación
             @NotNull 
             @Column(unique = true) 
-            String nombre) {
+            String nombre,
+
+            @NotNull 
+            @Column(unique = true) 
+            String codigo,
+
+            @NotNull             
+            String descripcion
+            ) {
     }
 
     public MateriaService(MateriaRepository repository) {
@@ -44,14 +52,18 @@ public class MateriaService {
     private MateriaRecord toMateriaRecord(Materia laMateria) {
         return new MateriaRecord(
                 laMateria.getId(),
-                laMateria.getNombre());
+                laMateria.getNombre(), 
+                laMateria.getCodigo(), 
+                laMateria.getDescripcion()
+                );
     }
 
     private MateriaRecord saveMateria(MateriaRecord nuevaMateria) {
         // Crea un nuevo objeto Materia y asigna los valores del objeto recibido
         Materia dbMateria = new Materia();
         dbMateria.setNombre(nuevaMateria.nombre);        
-        
+        dbMateria.setDescripcion(nuevaMateria.descripcion);        
+        dbMateria.setCodigo(nuevaMateria.codigo);        
         // Guarda el nuevo organismo en la base de datos
         Materia savedMateria = repository.save(dbMateria);
 
@@ -63,6 +75,8 @@ public class MateriaService {
         var dbMateria = repository.findById(laMateria.id).orElseThrow();
 
         dbMateria.setNombre(laMateria.nombre);        
+        dbMateria.setNombre(laMateria.codigo);        
+        dbMateria.setNombre(laMateria.descripcion);        
 
         Materia savedMateria = repository.save(dbMateria);
         

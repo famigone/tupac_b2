@@ -10,33 +10,54 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-
-
 @Entity
 @Table(name = "materia")
 public class Materia extends AbstractEntity {
-  
+
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-   
-   @OneToMany(mappedBy="materia") 
+    @OneToMany(mappedBy = "materia")
     private List<Practico> practicos = new LinkedList<>();
 
-    @ManyToMany(mappedBy = "materias")    
+    @ManyToMany(mappedBy = "materias")
     private List<User> users = new LinkedList<>();
 
-     // nombre de la materia     
-     @NotNull
-     @Column(unique = true)
-     private String nombre;
+    // nombre de la materia
+    @NotNull
+    @Column(unique = true)
+    private String nombre;
 
-     public Materia() {
-        
-     }
+    // nombre de la materia
+    @NotNull
+    @Column(unique = true)
+    private String codigo;
 
-     
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    // nombre de la materia
+    @NotNull
+    private String descripcion;
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Materia() {
+
+    }
+
     public List<User> getUsers() {
         return users;
     }
@@ -49,32 +70,29 @@ public class Materia extends AbstractEntity {
         return id;
     }
 
-public List<Practico> getPracticos() {
-    return practicos;
-}
-
-public void setPracticos(List<Practico> practicos) {
-    this.practicos = practicos;
-}
-
-    /*     public List<Practico> getPracticos() {
+    public List<Practico> getPracticos() {
         return practicos;
     }
-*/
+
+    public void setPracticos(List<Practico> practicos) {
+        this.practicos = practicos;
+    }
+
+    /*
+     * public List<Practico> getPracticos() {
+     * return practicos;
+     * }
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
-        
-    
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
- 
- 
-    
- 
+
 }

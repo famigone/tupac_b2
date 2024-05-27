@@ -45,15 +45,15 @@ export default function MateriaForm({ Materia, onSubmit }: MateriaFormProps) {
     //control de vacíos del lado del cliente
 
     const nombre = useFormPart(model.nombre);
-    
 
-    
+
+
     useEffect(() => {
         nombre.addValidator(
             new NotEmpty({
                 message: 'Por favor, ingrese un nombre'
             }));
-    
+
     }, []);
 
 
@@ -61,8 +61,10 @@ export default function MateriaForm({ Materia, onSubmit }: MateriaFormProps) {
         <>
 
             <div className="flex gap-s items-start">
+                <TextField label="Código" {...field(model.codigo)} />
                 <TextField label="Nombre" {...field(model.nombre)} />
- 
+                <TextField label="Descripción" {...field(model.descripcion)} />
+
             </div>
 
             <div className="flex gap-m"  >

@@ -17,5 +17,11 @@ class MateriaModel<T extends Materia_1 = Materia_1> extends AbstractEntityModel_
     get nombre(): StringModel_1 {
         return this[_getPropertyModel_1]("nombre", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.String" } }));
     }
+    get codigo(): StringModel_1 {
+        return this[_getPropertyModel_1]("codigo", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.String" } }));
+    }
+    get descripcion(): StringModel_1 {
+        return this[_getPropertyModel_1]("descripcion", (parent, key) => new StringModel_1(parent, key, false, { validators: [new NotNull_1()], meta: { javaType: "java.lang.String" } }));
+    }
 }
 export default MateriaModel;

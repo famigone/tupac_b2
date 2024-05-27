@@ -1,4 +1,4 @@
-import { Button } from '@hilla/react-components/Button.js';
+
 import { Notification } from '@hilla/react-components/Notification.js';
 import { TextField } from '@hilla/react-components/TextField.js';
 import { useEffect, useState } from 'react';
@@ -13,7 +13,7 @@ import { HorizontalLayout } from '@hilla/react-components/HorizontalLayout.js';
 import { Icon } from '@hilla/react-components/Icon.js';
 import { GridSortColumn } from '@hilla/react-components/GridSortColumn.js';
 import { GridFilterColumn } from '@hilla/react-components/GridFilterColumn.js';
-
+import { Box, Text, Heading, Button, Stack, Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 export default function HomeMateriaEstudiante() {
   const [Materias, setMaterias] = useState<MateriaRecord[]>([]);
   const [selected, setSelected] = useState<MateriaRecord | null>();
@@ -52,17 +52,43 @@ export default function HomeMateriaEstudiante() {
 
   return (
     <>
-      
+
       <div className="p-m  gap-m">
-      <HorizontalLayout theme="spacing padding">
-     {Materias.map((unaMateria: MateriaRecord, index: number) => (
-        <MateriaCard 
-          key={index} 
-          nombre={unaMateria.nombre}           
-        />
-      ))}
-      
-      </HorizontalLayout>
+        <HorizontalLayout theme="spacing padding">
+          {Materias.map((unaMateria: MateriaRecord, index: number) => (
+
+            <Card
+              direction={{ base: 'column', sm: 'row' }}
+              overflow='hidden'
+              variant='filled'
+              
+            >
+
+              <Stack>
+                <CardBody>
+                <Box>
+                  <Heading size='sm'>{unaMateria.codigo}</Heading>
+                  <Text>{unaMateria.nombre}</Text>
+                </Box>
+                  
+
+                  <Text py='2'>
+                  {unaMateria.descripcion}
+                  </Text>
+                </CardBody>
+
+                <CardFooter>
+                <Button variant='solid' colorScheme='blue' size='xs'>
+                  
+                  <Text> MATRICULARME</Text>
+                </Button>
+                </CardFooter>
+              </Stack>
+
+            </Card>
+          ))}
+
+        </HorizontalLayout>
       </div>
     </>
   );

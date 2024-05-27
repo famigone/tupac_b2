@@ -3,6 +3,10 @@
   "license": "UNLICENSED",
   "type": "module",
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@hilla/form": "2.5.6",
     "@hilla/frontend": "2.5.6",
     "@hilla/generator-typescript-cli": "2.5.6",
@@ -24,6 +28,7 @@
     "@vaadin/router": "1.7.5",
     "classnames": "^2.3.2",
     "construct-style-sheets-polyfill": "3.1.0",
+    "framer-motion": "^11.2.6",
     "lit": "3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -75,7 +80,11 @@
     "@hilla/generator-typescript-plugin-subtypes": "$@hilla/generator-typescript-plugin-subtypes",
     "@hilla/react-crud": "$@hilla/react-crud",
     "@hilla/generator-typescript-plugin-backbone": "$@hilla/generator-typescript-plugin-backbone",
-    "@hilla/generator-typescript-cli": "$@hilla/generator-typescript-cli"
+    "@hilla/generator-typescript-cli": "$@hilla/generator-typescript-cli",
+    "@chakra-ui/react": "$@chakra-ui/react",
+    "@emotion/react": "$@emotion/react",
+    "@emotion/styled": "$@emotion/styled",
+    "framer-motion": "$framer-motion"
   },
   "vaadin": {
     "dependencies": {
@@ -119,6 +128,6 @@
       "workbox-core": "7.0.0",
       "workbox-precaching": "7.0.0"
     },
-    "hash": "8de8864bb72925318364f29204499643ea889f38508f12c6e0462b3d4e433802"
+    "hash": "997d512c3232cdfe84603931d21ab7746f8ffce553425956f4dab654c8742dcf"
   }
 }

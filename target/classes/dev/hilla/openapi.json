@@ -547,6 +547,24 @@
               }
             ],
             "x-java-type" : "java.lang.String"
+          },
+          "codigo" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
+          },
+          "descripcion" : {
+            "type" : "string",
+            "x-validation-constraints" : [
+              {
+                "simpleName" : "NotNull"
+              }
+            ],
+            "x-java-type" : "java.lang.String"
           }
         }
       },
@@ -651,6 +669,24 @@
                 ]
               },
               "nombre" : {
+                "type" : "string",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.lang.String"
+              },
+              "codigo" : {
+                "type" : "string",
+                "x-validation-constraints" : [
+                  {
+                    "simpleName" : "NotNull"
+                  }
+                ],
+                "x-java-type" : "java.lang.String"
+              },
+              "descripcion" : {
                 "type" : "string",
                 "x-validation-constraints" : [
                   {

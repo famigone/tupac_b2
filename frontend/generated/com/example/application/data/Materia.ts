@@ -6,5 +6,7 @@ interface Materia extends AbstractEntity_1 {
     practicos: Array<Practico_1>;
     users: Array<User_1>;
     nombre: string;
+    codigo: string;
+    descripcion: string;
 }
 export default Materia;

@@ -65,8 +65,9 @@ export default function HomeMateria() {
           items={Materias}
           onActiveItemChanged={e => setSelected(e.detail.value)}
           selectedItems={[selected]}>
-
+          <GridFilterColumn path="codigo" header="CÓDIGO" />         
           <GridFilterColumn path="nombre" header="NOMBRE" />         
+          <GridFilterColumn path="descripcion" header="DESCRIPCIÓN" />         
         </Grid>
 
         <div style={{ margin: '3px' }} className="flex gap-m gap-s">
